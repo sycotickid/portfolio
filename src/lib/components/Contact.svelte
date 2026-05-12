@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fadeIn } from '$lib/actions/fadeIn';
+	import { mouseGlow } from '$lib/actions/mouseGlow';
 
 	let name = '';
 	let email = '';
@@ -115,16 +116,7 @@
 					type="submit"
 					disabled={status === 'sending'}
 					class="submit-btn"
-					onmouseenter={(e) => {
-						if (status !== 'sending') {
-							(e.currentTarget as HTMLElement).style.background = '#5a84e7';
-							(e.currentTarget as HTMLElement).style.color = '#0d0d0d';
-						}
-					}}
-					onmouseleave={(e) => {
-						(e.currentTarget as HTMLElement).style.background = 'transparent';
-						(e.currentTarget as HTMLElement).style.color = '#5a84e7';
-					}}
+					use:mouseGlow
 				>
 					{status === 'sending' ? 'Sending…' : 'Send Message →'}
 				</button>
@@ -171,7 +163,33 @@
 		letter-spacing: 0.1em;
 		padding: 12px;
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: all 0.2s ease;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.submit-btn::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle 80px at var(--gx, 50%) var(--gy, 50%),
+			rgba(255, 255, 255, 0.18) 0%,
+			transparent 70%
+		);
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		pointer-events: none;
+	}
+
+	.submit-btn:not(:disabled):hover {
+		background: #5a84e7;
+		color: #0d0d0d;
+		box-shadow: 0 0 20px rgba(90, 132, 231, 0.55), 0 0 40px rgba(90, 132, 231, 0.2);
+	}
+
+	.submit-btn:not(:disabled):hover::after {
+		opacity: 1;
 	}
 
 	.submit-btn:disabled {

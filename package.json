@@ -28,6 +28,7 @@
     "@fontsource-variable/noto-sans": "^5.0.0",
     "@fontsource-variable/playfair-display": "^5.0.0",
     "@fontsource/jetbrains-mono": "^5.0.0",
+    "resend": "^6.12.3",
     "simple-icons": "^16.19.0",
     "sql.js": "^1.12.0"
   },

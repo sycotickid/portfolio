@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { mouseGlow } from '$lib/actions/mouseGlow';
 	import { brandIcons } from '$lib/icons';
 
 	export let name: string;
@@ -12,12 +13,7 @@
 	style="min-height: 100vh; display: flex; align-items: center; padding-top: 56px; position: relative;"
 >
 	<div style="max-width: 1100px; margin: 0 auto; padding: 96px 24px;">
-		<h1
-			style="font-family: 'Playfair Display', Georgia, serif;
-			       font-size: clamp(44px, 7vw, 72px);
-			       line-height: 1; letter-spacing: -0.02em;
-			       color: #f0ede8; margin: 0 0 12px 0;"
-		>
+		<h1 class="hero-name" use:mouseGlow>
 			{name}
 		</h1>
 		<p
@@ -84,6 +80,18 @@
 </section>
 
 <style>
+	.hero-name {
+		font-family: 'Playfair Display', Georgia, serif;
+		font-size: clamp(44px, 7vw, 72px);
+		line-height: 1;
+		letter-spacing: -0.02em;
+		color: #f0ede8;
+		margin: 0 0 12px 0;
+		text-shadow:
+			0 0 40px rgba(240, 237, 232, 0.18),
+			0 0 80px rgba(240, 237, 232, 0.08);
+	}
+
 	.hero-btn {
 		display: flex;
 		align-items: center;
@@ -100,9 +108,27 @@
 		height: 100%;
 	}
 
+	.hero-btn::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle 18px at var(--gx, 50%) var(--gy, 50%),
+			rgba(90, 132, 231, 0.5) 0%,
+			transparent 100%
+		);
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		pointer-events: none;
+	}
+
 	.hero-btn:hover {
 		color: #5a84e7;
 		transform: translateY(-2px);
+		filter: drop-shadow(0 0 6px rgba(90, 132, 231, 0.6));
 	}
 
+	.hero-btn:hover::after {
+		opacity: 1;
+	}
 </style>

@@ -164,7 +164,7 @@
 		const onResize = () => { resize(); initStars(); };
 		const onMouse = (e: MouseEvent) => {
 			mouseX = (e.clientX / window.innerWidth)  * 2 - 1;
-			mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+			mouseY = (e.clientY / window.innerHeight) * 5 - 1;
 		};
 
 		window.addEventListener('resize', onResize);

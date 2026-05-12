@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fadeIn } from '$lib/actions/fadeIn';
+	import { mouseGlow } from '$lib/actions/mouseGlow';
 	import { skillIcons } from '$lib/icons';
 	import type { Skill } from '$lib/data/seed';
 
@@ -34,7 +35,7 @@
 					<div style="display: flex; flex-wrap: wrap; gap: 8px;">
 						{#each group.items as skill}
 							{@const icon = skill.icon ? skillIcons[skill.icon] : undefined}
-							<span class="skill-pill">
+							<span class="skill-pill" use:mouseGlow>
 								{#if icon}
 									<svg
 										width="12"
@@ -69,16 +70,37 @@
 		color: #f0ede8;
 		border-radius: 2px;
 		cursor: default;
-		transition: all 0.15s;
+		transition: all 0.2s ease;
 		display: inline-flex;
 		align-items: center;
 		gap: 6px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.skill-pill::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle 40px at var(--gx, 50%) var(--gy, 50%),
+			rgba(255, 255, 255, 0.25) 0%,
+			transparent 70%
+		);
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		pointer-events: none;
 	}
 
 	.skill-pill:hover {
 		border-color: #5a84e7;
 		background: #5a84e7;
 		color: #0d0d0d;
+		box-shadow: 0 0 14px rgba(90, 132, 231, 0.5), 0 0 28px rgba(90, 132, 231, 0.2);
+	}
+
+	.skill-pill:hover::after {
+		opacity: 1;
 	}
 
 	@media (max-width: 639px) {
