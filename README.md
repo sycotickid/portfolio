@@ -1,18 +1,18 @@
 # javiergonzalez.dev
 
-Personal portfolio site for Javier Gonzalez, Senior Software Engineer. Built as a fully static site with a client-side SQLite database — a deliberate technical flex that demonstrates the stack rather than just describing it.
+My personal portfolio site. Built as a fully static site with a client-side SQLite database.
 
 ## Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | SvelteKit 2 + Svelte 5 |
-| Styling | Tailwind CSS v4 |
-| Database | sql.js (SQLite WASM, runs in-browser) |
-| Icons | Simple Icons v16 |
-| Fonts | Playfair Display Variable, Noto Sans Variable, JetBrains Mono |
-| Deployment | Cloudflare Pages (static adapter) |
-| Email | Resend API via Cloudflare Pages Function |
+| Layer      | Choice                                                        |
+| ---------- | ------------------------------------------------------------- |
+| Framework  | SvelteKit 2 + Svelte 5                                        |
+| Styling    | Tailwind CSS v4                                               |
+| Database   | sql.js (SQLite WASM, runs in-browser)                         |
+| Icons      | Simple Icons v16                                              |
+| Fonts      | Playfair Display Variable, Noto Sans Variable, JetBrains Mono |
+| Deployment | Cloudflare Pages (static adapter)                             |
+| Email      | Resend API via Cloudflare Pages Function                      |
 
 ## Architecture
 
@@ -83,8 +83,8 @@ The `functions/` directory is picked up automatically by Cloudflare Pages and de
 
 Set in the Cloudflare Pages dashboard under **Settings → Environment Variables**:
 
-| Variable | Description |
-|---|---|
+| Variable         | Description                         |
+| ---------------- | ----------------------------------- |
 | `RESEND_API_KEY` | Resend API key for the contact form |
 
 ### Custom Domain
