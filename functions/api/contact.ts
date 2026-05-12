@@ -1,7 +1,3 @@
-interface Env {
-	RESEND_API_KEY: string;
-}
-
 interface ContactBody {
 	name: string;
 	email: string;
