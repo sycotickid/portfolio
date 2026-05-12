@@ -17,14 +17,16 @@
 			</p>
 
 			<img
-				src="/headshot.jpg"
+				src="/headshot.png"
 				alt="Javier Gonzalez"
 				width="256"
 				height="256"
-				style="width: 256px; height: 256px; border-radius: 8px;
-				       border: 2px solid #1a3a6a; object-fit: cover; display: block; flex-shrink: 0;"
+				style="width: 256px; height: 256px;
+				       object-fit: cover; display: block; flex-shrink: 0; backdrop-filter: blur(4px);
+					   background: rgba(255, 255, 255, 0.02); border: 1px solid #2a2a2a;"
 				onerror={(e: Event) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
 			/>
+			<!---->
 		</div>
 	</div>
 </section>

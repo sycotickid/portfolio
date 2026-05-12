@@ -9,6 +9,7 @@ All components live in `src/lib/components/`. All are consumed by `src/routes/+p
 Fixed top navigation bar (height: 56px).
 
 **Features:**
+
 - Blur backdrop (`backdrop-filter: blur`)
 - Active section highlight via `IntersectionObserver` — tracks which `<section>` is most visible
 - Hamburger menu on mobile (< 768px)
@@ -23,6 +24,7 @@ Fixed top navigation bar (height: 56px).
 Landing section (`#hero`). Full-viewport height.
 
 **Contents:**
+
 - Name (Playfair Display, 72px)
 - Title (JetBrains Mono)
 - 4 icon-only action buttons:
@@ -40,6 +42,7 @@ Icons sourced from `src/lib/icons.ts` (Simple Icons SVG paths).
 Canvas-based animated background. Renders behind all content via `position: fixed`.
 
 **2048 stars** with:
+
 - Mouse parallax (4% X, 2% Y offset)
 - Scroll parallax (25% offset)
 - Flickering stars (12.5% of total randomly flicker)
@@ -57,12 +60,14 @@ Canvas-based animated background. Renders behind all content via `position: fixe
 Bio section (`#about`).
 
 **Layout:**
+
 - Desktop: 2-column grid (text left, photo right)
 - Mobile: single column
 
 **Contents:**
+
 - Summary paragraph (from `getProfile()`)
-- `headshot.jpg` (256×256px, rounded, blue border)
+- `headshot.png` (256×256px, rounded, blue border)
 - Error fallback if image missing (handled in `svelte.config.js`)
 
 ---
@@ -76,6 +81,7 @@ Skill pills section (`#skills`).
 **4 categories:** Backend, Frontend, DevOps, Tools & AI
 
 Each skill renders as a pill (`<span class="skill-pill">`) with:
+
 - Simple Icons SVG icon (matched by `icon` field slug)
 - Skill name
 - Hover: accent color fill
@@ -89,6 +95,7 @@ Work history section (`#experience`).
 **Layout:** Vertical timeline — centered line with dot markers.
 
 **6 entries** rendered from `getExperience()`:
+
 - Company name
 - Job title
 - Location + date range (`.mono-meta`)
@@ -103,6 +110,7 @@ Education section (`#education`).
 **Layout:** 2-column card grid (collapses to 1 on mobile).
 
 **2 cards** from `getEducation()`:
+
 - Degree name
 - Institution
 - Year
@@ -119,12 +127,14 @@ Contact form + page footer (`#contact`).
 **Submission:** `fetch('POST /api/contact', { body: JSON.stringify({name, email, message}) })`
 
 **States:**
+
 - Default: form visible
 - Submitting: loading indicator
 - Success: confirmation message
 - Error: error message
 
 **Footer contents:**
+
 - Social links repeated
 - Build metadata (SvelteKit, Tailwind, sql.js)
 - `footer.png` mountain silhouette (parallax driven from `+page.svelte`)
@@ -142,8 +152,14 @@ Svelte action (not a component). Applied to section wrappers.
 Uses `IntersectionObserver`. When element enters viewport, adds `.visible` class which triggers CSS transition:
 
 ```css
-.fade-section { opacity: 0; transform: translateY(20px); }
-.fade-section.visible { opacity: 1; transform: translateY(0); }
+.fade-section {
+	opacity: 0;
+	transform: translateY(20px);
+}
+.fade-section.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
 ```
 
 ## Related

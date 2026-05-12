@@ -35,7 +35,7 @@ portfolio/
 │       └── contact.ts           # Cloudflare Pages Function (POST /api/contact)
 ├── static/
 │   ├── resume.pdf               # Downloadable resume
-│   ├── headshot.jpg             # Profile photo (256×256)
+│   ├── headshot.png             # Profile photo (256×256)
 │   ├── footer.png               # Mountain silhouette (parallax footer)
 │   ├── moon.png                 # Starfield asset
 │   ├── iss.png                  # Starfield asset

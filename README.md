@@ -51,7 +51,7 @@ functions/
     └── contact.ts             # Cloudflare Pages Function — email via Resend
 static/
 ├── resume.pdf
-├── headshot.jpg
+├── headshot.png
 ├── footer.png                 # Mountain silhouette overlay
 ├── favicon.svg
 ├── robots.txt

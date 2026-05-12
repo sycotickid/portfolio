@@ -54,6 +54,7 @@ Composes all sections in order:
 ```
 
 **Also handles:**
+
 - `onMount()` → `initDB()` (see [Data Layer](./data-layer.md))
 - Mouse move listener → footer parallax (lerp of `footer.png` X position)
 - JSON-LD `Person` schema injection via `<svelte:head>`
@@ -63,14 +64,14 @@ Composes all sections in order:
 
 All sections use anchor IDs for smooth-scroll navigation:
 
-| Section | ID | Component |
-|---------|----|-----------|
-| Hero | `#hero` | `Hero.svelte` |
-| About | `#about` | `About.svelte` |
-| Skills | `#skills` | `Skills.svelte` |
+| Section    | ID            | Component           |
+| ---------- | ------------- | ------------------- |
+| Hero       | `#hero`       | `Hero.svelte`       |
+| About      | `#about`      | `About.svelte`      |
+| Skills     | `#skills`     | `Skills.svelte`     |
 | Experience | `#experience` | `Experience.svelte` |
-| Education | `#education` | `Education.svelte` |
-| Contact | `#contact` | `Contact.svelte` |
+| Education  | `#education`  | `Education.svelte`  |
+| Contact    | `#contact`    | `Contact.svelte`    |
 
 Nav links use `href="#section-id"`. Browser handles scroll. No JS router needed.
 
@@ -80,12 +81,12 @@ Nav links use `href="#section-id"`. Browser handles scroll. No JS router needed.
 
 ```javascript
 handleHttpError({ path }) {
-  if (path === '/headshot.jpg') return; // silent — fallback in component
+  if (path === '/headshot.png') return; // silent — fallback in component
   throw error;
 }
 ```
 
-Prevents build failure if `headshot.jpg` is missing from `static/`.
+Prevents build failure if `headshot.png` is missing from `static/`.
 
 ## Related
 

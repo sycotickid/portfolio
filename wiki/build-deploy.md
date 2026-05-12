@@ -25,7 +25,7 @@ Required because SvelteKit static adapter only serves files from `static/`. The 
 
 ## Build Output
 
-**Adapter:** `@sveltejs/adapter-static`  
+**Adapter:** `@sveltejs/adapter-static`
 **Output dir:** `build/`
 
 ```
@@ -36,7 +36,7 @@ build/
 │   └── ...
 ├── sql-wasm.wasm       # Copied from static/
 ├── resume.pdf
-├── headshot.jpg
+├── headshot.png
 ├── footer.png
 ├── moon.png
 ├── iss.png
@@ -53,11 +53,11 @@ No server files. Entirely static.
 
 **Build settings in Cloudflare:**
 
-| Setting | Value |
-|---------|-------|
-| Build command | `npm run build` |
-| Build output directory | `build` |
-| Node.js version | 18+ |
+| Setting                | Value           |
+| ---------------------- | --------------- |
+| Build command          | `npm run build` |
+| Build output directory | `build`         |
+| Node.js version        | 18+             |
 
 **Functions:** Cloudflare auto-detects `functions/` directory. `functions/api/contact.ts` deploys as a Pages Function at route `/api/contact`.
 
@@ -65,13 +65,14 @@ No server files. Entirely static.
 
 ## Environment Variables
 
-| Variable | Environment | Purpose |
-|----------|-------------|---------|
+| Variable         | Environment          | Purpose                  |
+| ---------------- | -------------------- | ------------------------ |
 | `RESEND_API_KEY` | Production + Preview | Email sending via Resend |
 
 Set in Cloudflare Pages dashboard: Settings → Environment Variables.
 
 For local dev with Wrangler:
+
 ```
 # .env (not committed)
 RESEND_API_KEY=re_...
@@ -80,29 +81,29 @@ RESEND_API_KEY=re_...
 ## SvelteKit Config (`svelte.config.js`)
 
 ```javascript
-import adapter from '@sveltejs/adapter-static';
+import adapter from "@sveltejs/adapter-static";
 
 export default {
-  kit: {
-    adapter: adapter({ out: 'build' }),
-    prerender: {
-      handleHttpError({ path }) {
-        if (path === '/headshot.jpg') return;
-        throw error;
-      }
-    }
-  }
+	kit: {
+		adapter: adapter({ out: "build" }),
+		prerender: {
+			handleHttpError({ path }) {
+				if (path === "/headshot.png") return;
+				throw error;
+			},
+		},
+	},
 };
 ```
 
 ## Vite Config (`vite.config.ts`)
 
 ```typescript
-import { sveltekit } from '@sveltejs/vite-plugin-svelte';
-import tailwindcss from '@tailwindcss/vite';
+import { sveltekit } from "@sveltejs/vite-plugin-svelte";
+import tailwindcss from "@tailwindcss/vite";
 
 export default {
-  plugins: [tailwindcss(), sveltekit()]
+	plugins: [tailwindcss(), sveltekit()],
 };
 ```
 

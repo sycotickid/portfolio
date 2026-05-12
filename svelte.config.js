@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-cloudflare';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from "@sveltejs/adapter-cloudflare";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 const config = {
 	preprocess: vitePreprocess(),
@@ -7,12 +7,12 @@ const config = {
 		adapter: adapter(),
 		prerender: {
 			handleHttpError: ({ path, message }) => {
-				if (path === '/headshot.jpg') return;
+				if (path === "/headshot.png") return;
 
 				throw new Error(message);
-			}
-		}
-	}
+			},
+		},
+	},
 };
 
 export default config;
