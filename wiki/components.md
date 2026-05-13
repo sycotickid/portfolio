@@ -31,11 +31,12 @@ Landing section (`#hero`). Full-viewport height.
   - Email (mailto link)
   - LinkedIn (external link)
   - GitHub (external link)
-  - Resume PDF (download link → `/resume.pdf`)
+  - Resume PDF (download link → `/resume-javier-gonzalez.pdf`)
 
 Icons sourced from `src/lib/icons.ts` (Simple Icons SVG paths).
 
 **Mouse effects on `h1`:**
+
 - Base `text-shadow` glow (20px / 40px spread)
 - On hover: `text-shadow` brightens via CSS transition
 - `::before` pseudo-element: narrow 60° parallelogram sheen (`skewX(-30deg)`, `mix-blend-mode: screen`) centered at cursor via `--gx`/`--gy` CSS vars; fades in on hover
@@ -150,12 +151,12 @@ Contact form + page footer (`#contact`).
 
 Svelte action that tracks mouse position relative to the element and sets CSS custom properties:
 
-| Property | Value |
-|----------|-------|
-| `--gx` | cursor X offset from element left edge (px) |
-| `--gy` | cursor Y offset from element top edge (px) |
-| `--tx` | cursor X offset from element center (px) |
-| `--ty` | cursor Y offset from element center (px) |
+| Property | Value                                       |
+| -------- | ------------------------------------------- |
+| `--gx`   | cursor X offset from element left edge (px) |
+| `--gy`   | cursor Y offset from element top edge (px)  |
+| `--tx`   | cursor X offset from element center (px)    |
+| `--ty`   | cursor Y offset from element center (px)    |
 
 Used by: `Hero.svelte` (h1 sheen), `Contact.svelte` (submit button radial highlight).
 

@@ -65,7 +65,7 @@
 			</a>
 
 			<a
-				href="/resume.pdf"
+				href="/resume-javier-gonzalez.pdf"
 				download
 				title="Download Resume"
 				aria-label="Download Resume"

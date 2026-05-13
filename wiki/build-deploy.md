@@ -19,7 +19,7 @@ Runs automatically after `npm install`. Copies `node_modules/sql.js/dist/sql-was
 
 ## Build Output
 
-**Adapter:** `@sveltejs/adapter-cloudflare`  
+**Adapter:** `@sveltejs/adapter-cloudflare`
 **Output dir:** `.svelte-kit/cloudflare/`
 
 ```
@@ -29,7 +29,7 @@ Runs automatically after `npm install`. Copies `node_modules/sql.js/dist/sql-was
 │   ├── immutable/      # Hashed, long-cached assets
 │   └── ...
 ├── sql-wasm.wasm
-├── resume.pdf
+├── resume-javier-gonzalez.pdf
 ├── headshot.png
 ├── footer.png
 ├── moon.png
@@ -45,14 +45,14 @@ The contact API route (`src/routes/api/contact/+server.ts`) is bundled into `_wo
 
 **Config file:** `wrangler.jsonc`
 
-| Setting              | Value                                    |
-| -------------------- | ---------------------------------------- |
-| Worker name          | `portfolio`                              |
-| Compatibility date   | `2026-05-12`                             |
-| Compatibility flags  | `nodejs_compat`                          |
-| Main entry           | `.svelte-kit/cloudflare/_worker.js`      |
-| Assets directory     | `.svelte-kit/cloudflare`                 |
-| Custom domains       | `javiergonzalez.dev`, `www.javiergonzalez.dev` |
+| Setting             | Value                                          |
+| ------------------- | ---------------------------------------------- |
+| Worker name         | `portfolio`                                    |
+| Compatibility date  | `2026-05-12`                                   |
+| Compatibility flags | `nodejs_compat`                                |
+| Main entry          | `.svelte-kit/cloudflare/_worker.js`            |
+| Assets directory    | `.svelte-kit/cloudflare`                       |
+| Custom domains      | `javiergonzalez.dev`, `www.javiergonzalez.dev` |
 
 Observability is enabled (`wrangler.jsonc → observability.enabled: true`).
 
@@ -62,7 +62,7 @@ Observability is enabled (`wrangler.jsonc → observability.enabled: true`).
 | ---------------- | -------------------- | ------------------------ |
 | `RESEND_API_KEY` | Production + Preview | Email sending via Resend |
 
-Set via Wrangler dashboard or `wrangler secret put RESEND_API_KEY`.  
+Set via Wrangler dashboard or `wrangler secret put RESEND_API_KEY`.
 For local dev, use a `.dev.vars` file (not committed):
 
 ```
@@ -75,15 +75,15 @@ RESEND_API_KEY=re_...
 import adapter from "@sveltejs/adapter-cloudflare";
 
 export default {
-  kit: {
-    adapter: adapter(),
-    prerender: {
-      handleHttpError({ path, message }) {
-        if (path === "/headshot.png") return;
-        throw new Error(message);
-      },
-    },
-  },
+	kit: {
+		adapter: adapter(),
+		prerender: {
+			handleHttpError({ path, message }) {
+				if (path === "/headshot.png") return;
+				throw new Error(message);
+			},
+		},
+	},
 };
 ```
 
@@ -94,7 +94,7 @@ import { sveltekit } from "@sveltejs/vite-plugin-svelte";
 import tailwindcss from "@tailwindcss/vite";
 
 export default {
-  plugins: [tailwindcss(), sveltekit()],
+	plugins: [tailwindcss(), sveltekit()],
 };
 ```
 

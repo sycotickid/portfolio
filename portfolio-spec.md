@@ -347,7 +347,7 @@ portfolio/
 │   │       ├── Education.svelte
 │   │       └── Contact.svelte
 ├── static/
-│   ├── resume.pdf
+│   ├── resume-javier-gonzalez.pdf
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── svelte.config.js              # static adapter
@@ -404,7 +404,7 @@ portfolio/
 
 ### Phase 6 — Assets & Polish
 
-- [ ] Export/save resume as `resume.pdf` → `static/resume.pdf`
+- [ ] Export/save resume as `resume-javier-gonzalez.pdf` → `static/resume-javier-gonzalez.pdf`
 - [ ] Generate `og-image.png` (1200×630) for social sharing preview
 - [ ] Favicon (`.ico` + `.svg`)
 - [ ] Lighthouse audit — target 95+ Performance, 100 Accessibility, 100 SEO

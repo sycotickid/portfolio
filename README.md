@@ -50,7 +50,7 @@ functions/
 └── api/
     └── contact.ts             # Cloudflare Pages Function — email via Resend
 static/
-├── resume.pdf
+├── resume-javier-gonzalez.pdf
 ├── headshot.png
 ├── footer.png                 # Mountain silhouette overlay
 ├── favicon.ico

@@ -34,7 +34,7 @@ portfolio/
 │   └── api/
 │       └── contact.ts           # Cloudflare Pages Function (POST /api/contact)
 ├── static/
-│   ├── resume.pdf               # Downloadable resume
+│   ├── resume-javier-gonzalez.pdf               # Downloadable resume
 │   ├── headshot.png             # Profile photo (256×256)
 │   ├── footer.png               # Mountain silhouette (parallax footer)
 │   ├── moon.png                 # Starfield asset
