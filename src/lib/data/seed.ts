@@ -36,7 +36,7 @@ export const profileData: Profile = {
 	name: "Javier Gonzalez",
 	title: "Senior Software Engineer",
 	summary:
-		'🖥️ I am a full-stack engineer - Miami born, Dallas based - and I have been developing software for over ten years. I specialize in building and refactoring enterprise systems with modern tech stacks.  There is something in every part of the "stack" that I enjoy: creating sleek and intutive front-ends, architecting robust and clean backends, designing a data layer that almost sings with simplicity. ✨Recently I have enjoyed using AI tools to accelerate my development and explore things I haven\'t been able to before.\n🕹️ I enjoy spending my free-time as a hobby game developer, combining my technical skills with my interest in the arts, not to mention my love for video games themselves.',
+		'🖥️ I am a full-stack engineer - Miami born, Dallas based - and I have been developing software for over ten years. I specialize in building and refactoring enterprise systems with modern tech stacks. There is something in every part of the "stack" that I enjoy: creating sleek and intuitive front-ends, architecting robust and clean back-ends, designing a data layer that almost sings with simplicity. ✨Recently I have enjoyed using AI tools to accelerate my development and explore things I haven\'t been able to before.\n🕹️ I enjoy spending my free-time as a hobby game developer, combining my technical skills with my interest in the arts, not to mention my love for video games themselves.',
 	email: "javier@javiergonzalez.dev",
 	linkedin: "https://linkedin.com/in/javiergonzalezdev",
 };
