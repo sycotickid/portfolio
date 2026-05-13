@@ -40,7 +40,7 @@ portfolio/
 │   ├── moon.png                 # Starfield asset
 │   ├── iss.png                  # Starfield asset
 │   ├── sql-wasm.wasm            # SQLite WASM binary (copied by postinstall)
-│   ├── favicon.svg
+│   ├── favicon.ico
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── wiki/                        # This documentation

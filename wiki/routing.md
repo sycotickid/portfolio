@@ -8,9 +8,12 @@ Single route. No nested routes.
 
 ```
 src/routes/
-├── +layout.svelte   # Root layout
-├── +layout.ts       # Prerender config
-└── +page.svelte     # Only page — /
+├── +layout.svelte           # Root layout
+├── +layout.ts               # Prerender config
+├── +page.svelte             # Only page — /
+└── api/
+    └── contact/
+        └── +server.ts       # POST /api/contact — email via Resend
 ```
 
 ## Prerendering

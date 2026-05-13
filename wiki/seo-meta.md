@@ -12,16 +12,13 @@ Site is fully prerendered — all meta tags and schema are in the static HTML. N
 
 ```json
 {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Javier Gonzalez",
-  "jobTitle": "Senior Software Engineer",
-  "email": "javier@javiergonzalez.dev",
-  "url": "https://javiergonzalez.dev",
-  "sameAs": [
-    "https://linkedin.com/in/...",
-    "https://github.com/sycoticgames"
-  ]
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Javier Gonzalez",
+	"jobTitle": "Senior Software Engineer",
+	"email": "javier@javiergonzalez.dev",
+	"url": "https://javiergonzalez.dev",
+	"sameAs": ["https://linkedin.com/in/...", "https://github.com/sycoticgames"]
 }
 ```
 
@@ -30,7 +27,10 @@ Enables rich results in Google Search for name queries.
 ## Open Graph Tags
 
 ```html
-<meta property="og:title" content="Javier Gonzalez — Senior Software Engineer" />
+<meta
+	property="og:title"
+	content="Javier Gonzalez — Senior Software Engineer"
+/>
 <meta property="og:description" content="..." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://javiergonzalez.dev" />
@@ -42,23 +42,23 @@ Used by social platforms (LinkedIn, Twitter/X, Slack) for link previews.
 
 Proper element hierarchy:
 
-| Element | Usage |
-|---------|-------|
-| `<header>` | Nav |
-| `<main>` | Page content wrapper |
-| `<section>` | Each named section (hero, about, etc.) |
+| Element     | Usage                                   |
+| ----------- | --------------------------------------- |
+| `<header>`  | Nav                                     |
+| `<main>`    | Page content wrapper                    |
+| `<section>` | Each named section (hero, about, etc.)  |
 | `<article>` | Individual experience/education entries |
-| `<footer>` | Footer inside Contact |
+| `<footer>`  | Footer inside Contact                   |
 
 Screen readers and crawlers parse this without JS execution.
 
 ## Static Files
 
-| File | Purpose |
-|------|---------|
-| `static/robots.txt` | Crawl directives — allows all bots |
+| File                 | Purpose                                           |
+| -------------------- | ------------------------------------------------- |
+| `static/robots.txt`  | Crawl directives — allows all bots                |
 | `static/sitemap.xml` | Single URL entry for `https://javiergonzalez.dev` |
-| `static/favicon.svg` | SVG favicon (scales to any size) |
+| `static/favicon.ico` | SVG favicon (scales to any size)                  |
 
 ## No External Dependencies
 

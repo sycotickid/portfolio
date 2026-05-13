@@ -27,19 +27,19 @@ POST /api/contact
 | Data | sql.js (SQLite WASM) | ^1.12 |
 | Icons | Simple Icons | ^16.19 |
 | Fonts | Fontsource (self-hosted) | — |
-| Adapter | @sveltejs/adapter-static | ^3.0 |
-| Hosting | Cloudflare Pages | — |
-| Email | Resend API | — |
+| Adapter | @sveltejs/adapter-cloudflare | ^7.2 |
+| Hosting | Cloudflare Workers | — |
+| Email | Resend API | resend ^6.12 |
 
 ## Key Design Decisions
 
-**Static adapter** — `adapter-static` outputs flat HTML files. No Node.js server needed. Cloudflare serves static assets globally.
+**Cloudflare adapter** — `adapter-cloudflare` outputs a Worker bundle (`_worker.js`) plus static assets. Deployed via Wrangler to Cloudflare Workers.
 
 **Client-side SQLite** — [sql.js](./data-layer.md) compiles SQLite to WebAssembly. App seeds an in-browser DB on load. This is a technical showcase; if WASM fails, hardcoded seed data is used as fallback.
 
 **Single route** — All content lives at `/`. Sections (`#hero`, `#about`, etc.) are anchor-scrolled, not separate routes.
 
-**Edge function** — `/api/contact` is a Cloudflare Pages Function (edge compute). Keeps `RESEND_API_KEY` server-side only.
+**API route** — `/api/contact` is a SvelteKit server route (`src/routes/api/contact/+server.ts`) bundled into the Worker. Keeps `RESEND_API_KEY` server-side only. Accessed via `platform.env` (Cloudflare Workers binding).
 
 ## Data Flow
 

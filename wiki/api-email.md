@@ -4,11 +4,13 @@
 
 ## Contact Endpoint
 
-**File:** `functions/api/contact.ts`  
+**File:** `src/routes/api/contact/+server.ts`  
 **URL:** `POST /api/contact`  
-**Runtime:** Cloudflare Pages Function (edge compute)
+**Runtime:** Cloudflare Worker (bundled by `adapter-cloudflare` into `_worker.js`)
 
-This file is **not** part of the SvelteKit static build. Cloudflare auto-detects the `functions/` directory and deploys it as an edge function alongside the static assets.
+This is a SvelteKit server route — not a separate `functions/` directory. It's bundled into the Worker at build time and runs at the edge.
+
+`export const prerender = false` prevents SvelteKit from trying to statically render it.
 
 ## Request Format
 
@@ -31,12 +33,17 @@ All fields required. Returns 400 if any missing.
 
 **Validation error (400):**
 ```json
-{ "ok": false, "error": "Missing required fields" }
+{ "error": "All fields are required." }
 ```
 
 **Send failure (500):**
 ```json
-{ "ok": false, "error": "Failed to send email" }
+{ "error": "Failed to send message.<resend error>" }
+```
+
+**Missing API key (500):**
+```json
+{ "error": "Mail service not configured." }
 ```
 
 ## Email Flow
@@ -44,23 +51,31 @@ All fields required. Returns 400 if any missing.
 ```
 Contact.svelte
   → fetch POST /api/contact
-      → Cloudflare Edge Function
+      → Cloudflare Worker (SvelteKit server route)
           → POST https://api.resend.com/emails
               → Email delivered to javier@javiergonzalez.dev
                   reply_to: sender's email from form
 ```
 
+**From address:** `portfolio@contact.javiergonzalez.dev`  
+**Subject:** `Portfolio message from {name}`  
+**Body:** plain text — `From: {name} <{email}>\n\n{message}`
+
 ## Environment Variables
 
 | Variable | Where set | Used by |
 |----------|-----------|---------|
-| `RESEND_API_KEY` | Cloudflare Pages dashboard → Settings → Environment Variables | `functions/api/contact.ts` |
+| `RESEND_API_KEY` | Wrangler dashboard / `wrangler secret put` | `src/routes/api/contact/+server.ts` |
 
-Never set in `.env` for production. The `RESEND_API_KEY` in `.env` is for local Wrangler dev only.
-
-**Access in function:**
+**Access in route:**
 ```typescript
-const apiKey = context.env.RESEND_API_KEY;
+const env = platform?.env as { RESEND_API_KEY?: string } | undefined;
+const apiKey = env?.RESEND_API_KEY;
+```
+
+For local dev, use `.dev.vars` (not committed):
+```
+RESEND_API_KEY=re_...
 ```
 
 ## Client-Side Form (`Contact.svelte`)
@@ -78,15 +93,17 @@ async function submit() {
 }
 ```
 
-Form has three states: default, submitting, success, error.
+Form has four states: default, sending, success, error.
+
+Submit button uses `mouseGlow` action for radial highlight effect on hover.
 
 ## Security Notes
 
-- `RESEND_API_KEY` never exposed to browser — only runs in edge function
+- `RESEND_API_KEY` never exposed to browser — only runs in Worker
 - Input validated server-side before Resend call
 - No rate limiting currently implemented (Cloudflare WAF handles basic abuse)
 
 ## Related
 
-- [Build & Deploy](./build-deploy.md) — How functions deploy
+- [Build & Deploy](./build-deploy.md) — How the Worker deploys
 - [Components](./components.md) — Contact.svelte details

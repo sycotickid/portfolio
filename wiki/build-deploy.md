@@ -7,61 +7,54 @@
 ```bash
 npm install       # installs deps + runs postinstall
 npm run dev       # Vite dev server → http://localhost:5173
-npm run build     # production build → build/
-npm run preview   # serve build/ locally
+npm run build     # wrangler types + vite build → .svelte-kit/cloudflare/
+npm run preview   # npm run build + wrangler dev (local Cloudflare Worker)
+npm run deploy    # npm run build + wrangler deploy → production
+npm run gen       # wrangler types (regenerate worker-configuration.d.ts)
 ```
 
 ## postinstall Script
 
-Runs automatically after `npm install`:
-
-```json
-"postinstall": "node -e \"require('fs').copyFileSync(...)\""
-```
-
-Copies `node_modules/sql.js/dist/sql-wasm.wasm` → `static/sql-wasm.wasm`.
-
-Required because SvelteKit static adapter only serves files from `static/`. The WASM binary must be there at build time.
+Runs automatically after `npm install`. Copies `node_modules/sql.js/dist/sql-wasm.wasm` → `static/sql-wasm.wasm`. Required because the Cloudflare adapter only serves files from `static/` at build time.
 
 ## Build Output
 
-**Adapter:** `@sveltejs/adapter-static`
-**Output dir:** `build/`
+**Adapter:** `@sveltejs/adapter-cloudflare`  
+**Output dir:** `.svelte-kit/cloudflare/`
 
 ```
-build/
-├── index.html          # Prerendered page
+.svelte-kit/cloudflare/
+├── _worker.js          # Cloudflare Worker entry (SvelteKit SSR + API routes)
 ├── _app/               # JS/CSS chunks
 │   ├── immutable/      # Hashed, long-cached assets
 │   └── ...
-├── sql-wasm.wasm       # Copied from static/
+├── sql-wasm.wasm
 ├── resume.pdf
 ├── headshot.png
 ├── footer.png
 ├── moon.png
 ├── iss.png
-├── favicon.svg
+├── favicon.ico
 ├── robots.txt
 └── sitemap.xml
 ```
 
-No server files. Entirely static.
+The contact API route (`src/routes/api/contact/+server.ts`) is bundled into `_worker.js` — not a separate `functions/` directory.
 
-## Cloudflare Pages
+## Cloudflare Workers (via Wrangler)
 
-**Deployment trigger:** Push to `master` branch (or manual deploy via Cloudflare dashboard).
+**Config file:** `wrangler.jsonc`
 
-**Build settings in Cloudflare:**
+| Setting              | Value                                    |
+| -------------------- | ---------------------------------------- |
+| Worker name          | `portfolio`                              |
+| Compatibility date   | `2026-05-12`                             |
+| Compatibility flags  | `nodejs_compat`                          |
+| Main entry           | `.svelte-kit/cloudflare/_worker.js`      |
+| Assets directory     | `.svelte-kit/cloudflare`                 |
+| Custom domains       | `javiergonzalez.dev`, `www.javiergonzalez.dev` |
 
-| Setting                | Value           |
-| ---------------------- | --------------- |
-| Build command          | `npm run build` |
-| Build output directory | `build`         |
-| Node.js version        | 18+             |
-
-**Functions:** Cloudflare auto-detects `functions/` directory. `functions/api/contact.ts` deploys as a Pages Function at route `/api/contact`.
-
-**Domain:** `javiergonzalez.dev` — DNS managed via Cloudflare, pointed to Pages project.
+Observability is enabled (`wrangler.jsonc → observability.enabled: true`).
 
 ## Environment Variables
 
@@ -69,30 +62,28 @@ No server files. Entirely static.
 | ---------------- | -------------------- | ------------------------ |
 | `RESEND_API_KEY` | Production + Preview | Email sending via Resend |
 
-Set in Cloudflare Pages dashboard: Settings → Environment Variables.
-
-For local dev with Wrangler:
+Set via Wrangler dashboard or `wrangler secret put RESEND_API_KEY`.  
+For local dev, use a `.dev.vars` file (not committed):
 
 ```
-# .env (not committed)
 RESEND_API_KEY=re_...
 ```
 
 ## SvelteKit Config (`svelte.config.js`)
 
 ```javascript
-import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-cloudflare";
 
 export default {
-	kit: {
-		adapter: adapter({ out: "build" }),
-		prerender: {
-			handleHttpError({ path }) {
-				if (path === "/headshot.png") return;
-				throw error;
-			},
-		},
-	},
+  kit: {
+    adapter: adapter(),
+    prerender: {
+      handleHttpError({ path, message }) {
+        if (path === "/headshot.png") return;
+        throw new Error(message);
+      },
+    },
+  },
 };
 ```
 
@@ -103,11 +94,11 @@ import { sveltekit } from "@sveltejs/vite-plugin-svelte";
 import tailwindcss from "@tailwindcss/vite";
 
 export default {
-	plugins: [tailwindcss(), sveltekit()],
+  plugins: [tailwindcss(), sveltekit()],
 };
 ```
 
 ## Related
 
 - [Architecture](./architecture.md) — System overview
-- [API & Email](./api-email.md) — Cloudflare Functions
+- [API & Email](./api-email.md) — Contact API route
