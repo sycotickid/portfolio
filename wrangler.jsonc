@@ -12,12 +12,12 @@
 	"preview_urls": true,
 	"routes": [
 		{
-			"pattern": "javiergonzalez.dev/*",
+			"pattern": "javiergonzalez.dev",
 			"zone_name": "javiergonzalez.dev",
 			"custom_domain": true,
 		},
 		{
-			"pattern": "www.javiergonzalez.dev/*",
+			"pattern": "www.javiergonzalez.dev",
 			"zone_name": "javiergonzalez.dev",
 			"custom_domain": true,
 		},
