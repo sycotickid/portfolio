@@ -87,9 +87,17 @@
 		letter-spacing: -0.02em;
 		color: #f0ede8;
 		margin: 0 0 12px 0;
+		position: relative;
 		text-shadow:
-			0 0 40px rgba(240, 237, 232, 0.18),
-			0 0 80px rgba(240, 237, 232, 0.08);
+			0 0 20px rgba(240, 237, 232, 0.18),
+			0 0 40px rgba(240, 237, 232, 0.08);
+  		transition: 0.3s;
+	}
+
+	.hero-name:hover {
+		text-shadow:
+			0 0 30px rgba(240, 237, 232, 0.25),
+			0 0 50px rgba(240, 237, 232, 0.12);
 	}
 
 	.hero-btn {
