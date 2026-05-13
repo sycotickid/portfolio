@@ -53,7 +53,7 @@ static/
 ├── resume.pdf
 ├── headshot.png
 ├── footer.png                 # Mountain silhouette overlay
-├── favicon.svg
+├── favicon.ico
 ├── robots.txt
 ├── sitemap.xml
 └── sql-wasm.wasm              # Copied from node_modules by postinstall script
