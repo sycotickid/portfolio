@@ -8,6 +8,8 @@
 	let status: 'idle' | 'sending' | 'sent' | 'error' = 'idle';
 	let errorMsg = '';
 
+	const currentYear = new Date().getFullYear();
+
 	async function send(e: Event) {
 		e.preventDefault();
 		status = 'sending';
@@ -126,7 +128,7 @@
 
 	<footer style="margin-top: 64px; padding: 24px; border-top: 1px solid #1a1a1a; text-align: center;">
 		<p class="mono-meta" style="font-size: 0.7rem;">
-			Built with SvelteKit + SQLite · © 2026 Javier Gonzalez
+			Built with Svelte + SQLite · © {currentYear} Javier Gonzalez · Ad majorem Dei gloriam
 		</p>
 	</footer>
 </section>

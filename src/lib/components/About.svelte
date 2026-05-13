@@ -2,19 +2,30 @@
 	import { fadeIn } from '$lib/actions/fadeIn';
 
 	export let summary: string;
+
+	function paragraphs(summary: string): string[] {
+		return summary.split('\n').filter(Boolean);
+	}
 </script>
 
 <section id="about" class="section-pad">
 	<div use:fadeIn class="section-inner">
-		<h2 class="section-heading">About</h2>
+		<h2 class="section-heading">About Me</h2>
 
 		<div
 			style="display: grid; grid-template-columns: 1fr 256px; gap: 48px; align-items: center;"
 			class="about-grid"
 		>
-			<p style="color: #f0ede8; line-height: 1.8; font-size: 1.05rem; margin: 0;">
+			<div>
+				{#each paragraphs(summary) as paragraph}
+					<p class="summary-paragraph">
+						{paragraph}
+					</p>
+				{/each}
+			</div>
+			<!-- <p style="color: #f0ede8; line-height: 1.8; font-size: 1.05rem; margin: 0;">
 				{summary}
-			</p>
+			</p> -->
 
 			<img
 				src="/headshot.png"
@@ -36,5 +47,12 @@
 		.about-grid {
 			grid-template-columns: 1fr !important;
 		}
+	}
+
+	.summary-paragraph {
+		color: #f0ede8;
+		line-height: 1.8;
+		font-size: 1.05rem;
+		padding: 1rem 0;
 	}
 </style>

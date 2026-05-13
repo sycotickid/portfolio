@@ -10,10 +10,11 @@
 		backend: 'Backend',
 		frontend: 'Frontend',
 		devops: 'DevOps / Infra',
-		tools: 'Tools & AI'
+		tools: 'Tools & AI',
+		gamedev: 'Game Dev'
 	};
 
-	const categoryOrder = ['backend', 'frontend', 'devops', 'tools'];
+	const categoryOrder = ['backend', 'frontend', 'devops', 'tools', 'gamedev'];
 
 	$: grouped = categoryOrder
 		.map((cat) => ({

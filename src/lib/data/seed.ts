@@ -5,7 +5,6 @@ export interface Profile {
 	summary: string;
 	email: string;
 	linkedin: string;
-	phone: string;
 }
 
 export interface Experience {
@@ -37,10 +36,9 @@ export const profileData: Profile = {
 	name: "Javier Gonzalez",
 	title: "Senior Software Engineer",
 	summary:
-		"Full-stack engineer with 6+ years building and scaling enterprise web applications, utilizing Claude Code to ship production-quality software with higher speed and efficiency. Proven track record leading large-scope refactors, designing modern APIs, and delivering high-impact features across diverse technology stacks. Targeting senior full-stack roles at fast-moving product companies where engineering velocity and code quality are both taken seriously.",
+		'🖥️ I am a full-stack engineer - Miami born, Dallas based - and I have been developing software for over ten years. I specialize in building and refactoring enterprise systems with modern tech stacks.  There is something in every part of the "stack" that I enjoy: creating sleek and intutive front-ends, architecting robust and clean backends, designing a data layer that almost sings with simplicity. ✨Recently I have enjoyed using AI tools to accelerate my development and explore things I haven\'t been able to before.\n🕹️ I enjoy spending my free-time as a hobby game developer, combining my technical skills with my interest in the arts, not to mention my love for video games themselves.',
 	email: "javier@javiergonzalez.dev",
 	linkedin: "https://linkedin.com/in/javiergonzalezdev",
-	phone: "(786) 626-8015",
 };
 
 export const experienceData: Experience[] = [
@@ -122,24 +120,27 @@ export const educationData: Education[] = [
 ];
 
 export const skillsData: Skill[] = [
-	{ id: 1,  name: 'PHP / Laravel',          category: 'backend',  icon: 'php'          },
-	{ id: 2,  name: '.NET / C#',              category: 'backend',  icon: 'dotnet'       },
-	{ id: 3,  name: 'Golang',                 category: 'backend',  icon: 'go'           },
-	{ id: 4,  name: 'Node.js',                category: 'backend',  icon: 'nodedotjs'    },
-	{ id: 5,  name: 'Spring Boot',            category: 'backend',  icon: 'springboot'   },
-	{ id: 6,  name: 'MySQL',                  category: 'backend',  icon: 'mysql'        },
-	{ id: 7,  name: 'PostgreSQL',             category: 'backend',  icon: 'postgresql'   },
-	{ id: 8,  name: 'SQLite',                 category: 'backend',  icon: 'sqlite'       },
-	{ id: 9,  name: 'React / TypeScript',     category: 'frontend', icon: 'react'        },
-	{ id: 10, name: 'Svelte',                 category: 'frontend', icon: 'svelte'       },
-	{ id: 11, name: 'Angular',                category: 'frontend', icon: 'angular'      },
-	{ id: 12, name: 'Tailwind CSS',           category: 'frontend', icon: 'tailwindcss'  },
-	{ id: 13, name: 'WordPress',              category: 'frontend', icon: 'wordpress'    },
-	{ id: 14, name: 'Docker',                 category: 'devops',   icon: 'docker'       },
-	{ id: 15, name: 'Kubernetes',             category: 'devops',   icon: 'kubernetes'   },
-	{ id: 16, name: 'REST API Design',        category: 'devops'                         },
-	{ id: 17, name: 'Claude Code / OpenCode', category: 'tools',    icon: 'claude'       },
-	{ id: 18, name: 'Datastar',               category: 'tools'                          },
-	{ id: 19, name: 'Figma',                  category: 'tools',    icon: 'figma'        },
-	{ id: 20, name: 'Unreal Engine 5',        category: 'tools',    icon: 'unrealengine' },
+	{ id: 1, name: "PHP / Laravel", category: "backend", icon: "php" },
+	{ id: 2, name: ".NET / C#", category: "backend", icon: "dotnet" },
+	{ id: 3, name: "Golang", category: "backend", icon: "go" },
+	{ id: 4, name: "Node.js", category: "backend", icon: "nodedotjs" },
+	{ id: 5, name: "Spring Boot", category: "backend", icon: "springboot" },
+	{ id: 6, name: "MySQL", category: "backend", icon: "mysql" },
+	{ id: 7, name: "PostgreSQL", category: "backend", icon: "postgresql" },
+	{ id: 8, name: "SQLite", category: "backend", icon: "sqlite" },
+	{ id: 9, name: "Typescript", category: "frontend", icon: "typescript" },
+	{ id: 10, name: "React", category: "frontend", icon: "react" },
+	{ id: 11, name: "Svelte", category: "frontend", icon: "svelte" },
+	{ id: 12, name: "Angular", category: "frontend", icon: "angular" },
+	{ id: 13, name: "Tailwind CSS", category: "frontend", icon: "tailwindcss" },
+	{ id: 14, name: "WordPress", category: "frontend", icon: "wordpress" },
+	{ id: 15, name: "Docker", category: "devops", icon: "docker" },
+	{ id: 16, name: "Kubernetes", category: "devops", icon: "kubernetes" },
+	{ id: 17, name: "REST API Design", category: "devops" },
+	{ id: 18, name: "Claude Code / OpenCode", category: "tools", icon: "claude" },
+	{ id: 19, name: "Datastar", category: "frontend", icon: "datastar" },
+	{ id: 20, name: "Figma", category: "tools", icon: "figma" },
+	{ id: 21, name: "Unreal Engine", category: "gamedev", icon: "unrealengine" },
+	{ id: 22, name: "Godot", category: "gamedev", icon: "godot" },
+	{ id: 23, name: "Blender", category: "gamedev", icon: "blender" },
 ];

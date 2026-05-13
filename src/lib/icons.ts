@@ -18,32 +18,40 @@ import {
 	siKubernetes,
 	siFigma,
 	siUnrealengine,
-	siClaude
-} from 'simple-icons';
+	siClaude,
+	siGodotengine,
+	siRocket,
+	siBlender,
+	siTypescript,
+} from "simple-icons";
 
 export type SI = { path: string; hex: string; title: string };
 
 export const brandIcons = {
-	github: siGithub
+	github: siGithub,
 } satisfies Record<string, SI>;
 
 export const skillIcons: Record<string, SI> = {
-	php:          siPhp,
-	dotnet:       siDotnet,
-	go:           siGo,
-	nodedotjs:    siNodedotjs,
-	springboot:   siSpringboot,
-	mysql:        siMysql,
-	postgresql:   siPostgresql,
-	sqlite:       siSqlite,
-	react:        siReact,
-	svelte:       siSvelte,
-	angular:      siAngular,
-	tailwindcss:  siTailwindcss,
-	wordpress:    siWordpress,
-	docker:       siDocker,
-	kubernetes:   siKubernetes,
-	figma:        siFigma,
+	php: siPhp,
+	dotnet: siDotnet,
+	go: siGo,
+	nodedotjs: siNodedotjs,
+	springboot: siSpringboot,
+	mysql: siMysql,
+	postgresql: siPostgresql,
+	sqlite: siSqlite,
+	react: siReact,
+	svelte: siSvelte,
+	angular: siAngular,
+	tailwindcss: siTailwindcss,
+	wordpress: siWordpress,
+	docker: siDocker,
+	kubernetes: siKubernetes,
+	figma: siFigma,
 	unrealengine: siUnrealengine,
-	claude:       siClaude
+	claude: siClaude,
+	datastar: siRocket,
+	godot: siGodotengine,
+	blender: siBlender,
+	typescript: siTypescript,
 };

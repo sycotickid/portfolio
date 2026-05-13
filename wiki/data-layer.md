@@ -10,11 +10,11 @@ If WASM fails to load, components fall back to `seed.ts` data directly — no vi
 
 ## Files
 
-| File | Role |
-|------|------|
-| `src/lib/data/seed.ts` | TypeScript interfaces + all resume data |
-| `src/lib/db.ts` | sql.js init, table creation, query functions |
-| `static/sql-wasm.wasm` | SQLite WASM binary (served as static asset) |
+| File                   | Role                                         |
+| ---------------------- | -------------------------------------------- |
+| `src/lib/data/seed.ts` | TypeScript interfaces + all resume data      |
+| `src/lib/db.ts`        | sql.js init, table creation, query functions |
+| `static/sql-wasm.wasm` | SQLite WASM binary (served as static asset)  |
 
 ## Initialization (`db.ts`)
 
@@ -37,8 +37,7 @@ CREATE TABLE profile (
   title      TEXT,
   summary    TEXT,
   email      TEXT,
-  linkedin   TEXT,
-  phone      TEXT
+  linkedin   TEXT
 );
 
 CREATE TABLE experience (
@@ -70,44 +69,43 @@ CREATE TABLE skill (
 
 All exported from `src/lib/db.ts`:
 
-| Function | Returns |
-|----------|---------|
-| `getProfile()` | Single profile row |
+| Function          | Returns                                          |
+| ----------------- | ------------------------------------------------ |
+| `getProfile()`    | Single profile row                               |
 | `getExperience()` | Array of experience rows (reverse chronological) |
-| `getEducation()` | Array of education rows |
-| `getSkills()` | Array of skill rows |
+| `getEducation()`  | Array of education rows                          |
+| `getSkills()`     | Array of skill rows                              |
 
 ## TypeScript Interfaces (`seed.ts`)
 
 ```typescript
 interface Profile {
-  name: string;
-  title: string;
-  summary: string;
-  email: string;
-  linkedin: string;
-  phone: string;
+	name: string;
+	title: string;
+	summary: string;
+	email: string;
+	linkedin: string;
 }
 
 interface Experience {
-  company: string;
-  title: string;
-  location: string;
-  start_date: string;
-  end_date: string;
-  description: string;  // pipe-delimited
+	company: string;
+	title: string;
+	location: string;
+	start_date: string;
+	end_date: string;
+	description: string; // pipe-delimited
 }
 
 interface Education {
-  degree: string;
-  institution: string;
-  year: number;
+	degree: string;
+	institution: string;
+	year: number;
 }
 
 interface Skill {
-  name: string;
-  category: 'Backend' | 'Frontend' | 'DevOps' | 'Tools & AI';
-  icon: string;
+	name: string;
+	category: "Backend" | "Frontend" | "DevOps" | "Tools & AI";
+	icon: string;
 }
 ```
 
@@ -117,30 +115,30 @@ interface Skill {
 
 **Experience** — 6 roles (newest first):
 
-| Company | Role | Dates |
-|---------|------|-------|
-| Paycom | Senior Software Engineer | Mar 2022 – May 2026 |
-| Word on Fire Catholic Ministries | Contract SE | Oct 2021 – Jul 2024 |
-| Revature | Full-Stack SE | Nov 2020 – Feb 2022 |
-| Drive Studio | Unreal Developer | Apr 2019 – Oct 2020 |
-| Code Ninjas / iD Tech | Programming Instructor | Jan 2018 – Apr 2019 |
-| Florida International University | Front-End Developer | Oct 2014 – Sep 2015 |
+| Company                          | Role                     | Dates               |
+| -------------------------------- | ------------------------ | ------------------- |
+| Paycom                           | Senior Software Engineer | Mar 2022 – May 2026 |
+| Word on Fire Catholic Ministries | Contract SE              | Oct 2021 – Jul 2024 |
+| Revature                         | Full-Stack SE            | Nov 2020 – Feb 2022 |
+| Drive Studio                     | Unreal Developer         | Apr 2019 – Oct 2020 |
+| Code Ninjas / iD Tech            | Programming Instructor   | Jan 2018 – Apr 2019 |
+| Florida International University | Front-End Developer      | Oct 2014 – Sep 2015 |
 
 **Education** — 2 degrees:
 
-| Degree | Institution | Year |
-|--------|-------------|------|
-| B.S. Computer Science | Florida International University | 2015 |
+| Degree                 | Institution                             | Year |
+| ---------------------- | --------------------------------------- | ---- |
+| B.S. Computer Science  | Florida International University        | 2015 |
 | B.S. Game Art & Design | John Paul the Great Catholic University | 2018 |
 
 **Skills** — 20 total across 4 categories:
 
-| Category | Skills |
-|----------|--------|
-| Backend | PHP/Laravel, .NET/C#, Golang, Node.js, Spring Boot, MySQL, PostgreSQL, SQLite |
-| Frontend | React/TypeScript, Svelte, Angular, Tailwind CSS, WordPress |
-| DevOps | Docker, Kubernetes, REST API Design |
-| Tools & AI | Claude Code/OpenCode, Datastar, Figma, Unreal Engine 5 |
+| Category   | Skills                                                                        |
+| ---------- | ----------------------------------------------------------------------------- |
+| Backend    | PHP/Laravel, .NET/C#, Golang, Node.js, Spring Boot, MySQL, PostgreSQL, SQLite |
+| Frontend   | React/TypeScript, Svelte, Angular, Tailwind CSS, WordPress                    |
+| DevOps     | Docker, Kubernetes, REST API Design                                           |
+| Tools & AI | Claude Code/OpenCode, Datastar, Figma, Unreal Engine 5                        |
 
 ## Updating Resume Data
 

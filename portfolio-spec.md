@@ -56,8 +56,7 @@ CREATE TABLE profile (
   title TEXT,
   summary TEXT,
   email TEXT,
-  linkedin TEXT,
-  phone TEXT
+  linkedin TEXT
 );
 
 CREATE TABLE experience (
