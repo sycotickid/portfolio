@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { fadeIn } from '$lib/actions/fadeIn';
-	import type { Experience } from '$lib/data/seed';
+	import { fadeIn } from "$lib/actions/fadeIn";
+	import type { Experience } from "$lib/data/seed";
 
 	export let experiences: Experience[];
 
 	function bullets(description: string): string[] {
-		return description.split('|').filter(Boolean);
+		return description.split("|").filter(Boolean);
 	}
 </script>
 
@@ -14,7 +14,6 @@
 		<h2 class="section-heading" style="margin-bottom: 48px;">Experience</h2>
 
 		<div style="position: relative;">
-			<!-- Vertical timeline line -->
 			<div
 				style="position: absolute; left: 5px; top: 10px; bottom: 24px;
 				       width: 1px; background: #2a2a2a;"
@@ -23,7 +22,6 @@
 			<div style="display: flex; flex-direction: column; gap: 48px;">
 				{#each experiences as exp}
 					<article style="position: relative; padding-left: 40px;">
-						<!-- Timeline dot -->
 						<div
 							style="position: absolute; left: 0; top: 10px;
 							       width: 11px; height: 11px; border-radius: 50%;
@@ -45,12 +43,17 @@
 								</h3>
 								<p class="mono-meta">{exp.title} · {exp.location}</p>
 							</div>
-							<span class="mono-meta" style="white-space: nowrap; padding-top: 2px; font-size: 0.7rem;">
+							<span
+								class="mono-meta"
+								style="white-space: nowrap; padding-top: 2px; font-size: 0.7rem;"
+							>
 								{exp.start_date}–{exp.end_date}
 							</span>
 						</div>
 
-						<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+						<ul
+							style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;"
+						>
 							{#each bullets(exp.description) as bullet}
 								<li
 									style="font-size: 0.9rem; line-height: 1.7; color: #c8c5c0;

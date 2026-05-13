@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { fadeIn } from '$lib/actions/fadeIn';
-	import type { Education } from '$lib/data/seed';
+	import { fadeIn } from "$lib/actions/fadeIn";
+	import type { Education } from "$lib/data/seed";
 
 	export let education: Education[];
 </script>
@@ -9,13 +9,18 @@
 	<div use:fadeIn class="section-inner">
 		<h2 class="section-heading">Education</h2>
 
-		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;" class="edu-grid">
+		<div
+			style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;"
+			class="edu-grid"
+		>
 			{#each education as edu}
 				<article
 					class="edu-card"
 					style="border: 1px solid #2a2a2a; padding: 24px; transition: border-color 0.2s;"
-					onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = '#5a84e7')}
-					onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = '#2a2a2a')}
+					onmouseenter={(e) =>
+						((e.currentTarget as HTMLElement).style.borderColor = "#5a84e7")}
+					onmouseleave={(e) =>
+						((e.currentTarget as HTMLElement).style.borderColor = "#2a2a2a")}
 				>
 					<h3
 						style="font-family: 'Playfair Display Variable', Georgia, serif; font-size: 1.15rem;

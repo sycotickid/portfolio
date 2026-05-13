@@ -61,7 +61,9 @@ body {
 .fade-section {
 	opacity: 0;
 	transform: translateY(24px);
-	transition: opacity 0.7s ease, transform 0.7s ease;
+	transition:
+		opacity 0.7s ease,
+		transform 0.7s ease;
 }
 
 .fade-section.visible {
@@ -80,7 +82,7 @@ body {
 }
 
 .section-heading {
-	font-family: 'Playfair Display Variable', Georgia, serif;
+	font-family: "Playfair Display Variable", Georgia, serif;
 	font-size: 2rem;
 	color: #f0ede8;
 	margin: 0 0 40px 0;
@@ -88,7 +90,7 @@ body {
 }
 
 .mono-label {
-	font-family: 'JetBrains Mono', monospace;
+	font-family: "JetBrains Mono", monospace;
 	font-size: 0.65rem;
 	text-transform: uppercase;
 	letter-spacing: 0.12em;
@@ -97,7 +99,7 @@ body {
 }
 
 .mono-meta {
-	font-family: 'JetBrains Mono', monospace;
+	font-family: "JetBrains Mono", monospace;
 	font-size: 0.75rem;
 	color: #888580;
 	margin: 0;

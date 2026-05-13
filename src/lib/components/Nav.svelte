@@ -1,32 +1,32 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount } from "svelte";
 
-	let activeSection = '';
+	let activeSection = "";
 	let mobileOpen = false;
 
 	const links = [
-		{ href: '#about', label: 'About' },
-		{ href: '#skills', label: 'Skills' },
-		{ href: '#experience', label: 'Experience' },
-		{ href: '#education', label: 'Education' },
-		{ href: '#contact', label: 'Contact' }
+		{ href: "#about", label: "About" },
+		{ href: "#skills", label: "Skills" },
+		{ href: "#experience", label: "Experience" },
+		{ href: "#education", label: "Education" },
+		{ href: "#contact", label: "Contact" },
 	];
 
 	onMount(() => {
 		const sections = [
-			document.querySelector('#hero'),
-			...links.map((l) => document.querySelector(l.href))
+			document.querySelector("#hero"),
+			...links.map((l) => document.querySelector(l.href)),
 		].filter(Boolean) as Element[];
 
 		const observer = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
 					if (entry.isIntersecting) {
-						activeSection = '#' + entry.target.id;
+						activeSection = "#" + entry.target.id;
 					}
 				}
 			},
-			{ rootMargin: '-40% 0px -55% 0px' }
+			{ rootMargin: "-40% 0px -55% 0px" },
 		);
 
 		sections.forEach((s) => observer.observe(s));
@@ -48,8 +48,8 @@
 			style="font-family: 'Playfair Display', Georgia, serif; color: #f0ede8;
 			       font-size: 1.1rem; text-decoration: none; letter-spacing: -0.02em;
 			       transition: color 0.2s;"
-			onmouseenter={(e) => (e.currentTarget.style.color = '#5a84e7')}
-			onmouseleave={(e) => (e.currentTarget.style.color = '#f0ede8')}
+			onmouseenter={(e) => (e.currentTarget.style.color = "#5a84e7")}
+			onmouseleave={(e) => (e.currentTarget.style.color = "#f0ede8")}
 		>
 			Javier Gonzalez
 		</a>
@@ -111,7 +111,9 @@
 			style="border-top: 1px solid #1a1a1a; background: #0d0d0d; padding: 16px 24px;"
 			class="mobile-menu"
 		>
-			<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+			<ul
+				style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;"
+			>
 				{#each links as link}
 					<li>
 						<a

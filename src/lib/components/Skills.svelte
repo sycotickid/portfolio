@@ -1,26 +1,26 @@
 <script lang="ts">
-	import { fadeIn } from '$lib/actions/fadeIn';
-	import { mouseGlow } from '$lib/actions/mouseGlow';
-	import { skillIcons } from '$lib/icons';
-	import type { Skill } from '$lib/data/seed';
+	import { fadeIn } from "$lib/actions/fadeIn";
+	import { mouseGlow } from "$lib/actions/mouseGlow";
+	import { skillIcons } from "$lib/icons";
+	import type { Skill } from "$lib/data/seed";
 
 	export let skills: Skill[];
 
 	const categoryLabels: Record<string, string> = {
-		backend: 'Backend',
-		frontend: 'Frontend',
-		devops: 'DevOps / Infra',
-		tools: 'Tools & AI',
-		gamedev: 'Game Dev'
+		backend: "Backend",
+		frontend: "Frontend",
+		devops: "DevOps / Infra",
+		tools: "Tools & AI",
+		gamedev: "Game Dev",
 	};
 
-	const categoryOrder = ['backend', 'frontend', 'devops', 'tools', 'gamedev'];
+	const categoryOrder = ["backend", "frontend", "devops", "tools", "gamedev"];
 
 	$: grouped = categoryOrder
 		.map((cat) => ({
 			category: cat,
 			label: categoryLabels[cat],
-			items: skills.filter((s) => s.category === cat)
+			items: skills.filter((s) => s.category === cat),
 		}))
 		.filter((g) => g.items.length > 0);
 </script>
@@ -29,7 +29,10 @@
 	<div use:fadeIn class="section-inner">
 		<h2 class="section-heading">Skills</h2>
 
-		<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;" class="skills-grid">
+		<div
+			style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;"
+			class="skills-grid"
+		>
 			{#each grouped as group}
 				<div class="skill-group">
 					<h3 class="mono-label" style="margin-bottom: 16px;">{group.label}</h3>
@@ -64,7 +67,7 @@
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
 		background: rgba(255, 255, 255, 0.02);
-		font-family: 'JetBrains Mono', monospace;
+		font-family: "JetBrains Mono", monospace;
 		font-size: 0.7rem;
 		padding: 6px 12px;
 		border: 1px solid #2a2a2a;
@@ -80,7 +83,7 @@
 	}
 
 	.skill-pill::after {
-		content: '';
+		content: "";
 		position: absolute;
 		inset: 0;
 		background: radial-gradient(
@@ -97,7 +100,9 @@
 		border-color: #5a84e7;
 		background: #5a84e7;
 		color: #0d0d0d;
-		box-shadow: 0 0 14px rgba(90, 132, 231, 0.5), 0 0 28px rgba(90, 132, 231, 0.2);
+		box-shadow:
+			0 0 14px rgba(90, 132, 231, 0.5),
+			0 0 28px rgba(90, 132, 231, 0.2);
 	}
 
 	.skill-pill:hover::after {

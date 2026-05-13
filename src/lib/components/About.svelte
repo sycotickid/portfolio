@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { fadeIn } from '$lib/actions/fadeIn';
+	import { fadeIn } from "$lib/actions/fadeIn";
 
 	export let summary: string;
 
 	function paragraphs(summary: string): string[] {
-		return summary.split('\n').filter(Boolean);
+		return summary.split("\n").filter(Boolean);
 	}
 </script>
 
@@ -23,9 +23,6 @@
 					</p>
 				{/each}
 			</div>
-			<!-- <p style="color: #f0ede8; line-height: 1.8; font-size: 1.05rem; margin: 0;">
-				{summary}
-			</p> -->
 
 			<img
 				src="/headshot.png"
@@ -35,9 +32,9 @@
 				style="width: 256px; height: 256px;
 				       object-fit: cover; display: block; flex-shrink: 0; backdrop-filter: blur(4px);
 					   background: rgba(255, 255, 255, 0.02); border: 1px solid #2a2a2a;"
-				onerror={(e: Event) => ((e.currentTarget as HTMLImageElement).style.display = 'none')}
+				onerror={(e: Event) =>
+					((e.currentTarget as HTMLImageElement).style.display = "none")}
 			/>
-			<!---->
 		</div>
 	</div>
 </section>

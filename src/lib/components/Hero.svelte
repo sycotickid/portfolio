@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { mouseGlow } from '$lib/actions/mouseGlow';
-	import { brandIcons } from '$lib/icons';
+	import { mouseGlow } from "$lib/actions/mouseGlow";
+	import { brandIcons } from "$lib/icons";
 
 	export let name: string;
 	export let title: string;
@@ -30,7 +30,13 @@
 				aria-label="Email"
 				class="hero-btn"
 			>
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					aria-hidden="true"
+				>
 					<rect x="2" y="4" width="20" height="16" rx="2" />
 					<path d="m2 7 10 7 10-7" />
 				</svg>
@@ -45,7 +51,9 @@
 				class="hero-btn"
 			>
 				<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-					<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+					<path
+						d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+					/>
 					<rect x="2" y="9" width="4" height="12" />
 					<circle cx="4" cy="4" r="2" />
 				</svg>
@@ -72,7 +80,10 @@
 				class="hero-btn"
 			>
 				<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-					<path fill-rule="evenodd" d="M13.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.5L13.5 2zM9 14.5L12 17.5l3-3h-2V10h-2v4.5H9z"/>
+					<path
+						fill-rule="evenodd"
+						d="M13.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.5L13.5 2zM9 14.5L12 17.5l3-3h-2V10h-2v4.5H9z"
+					/>
 				</svg>
 			</a>
 		</div>
@@ -81,7 +92,7 @@
 
 <style>
 	.hero-name {
-		font-family: 'Playfair Display', Georgia, serif;
+		font-family: "Playfair Display", Georgia, serif;
 		font-size: clamp(44px, 7vw, 72px);
 		line-height: 1;
 		letter-spacing: -0.02em;
@@ -91,7 +102,7 @@
 		text-shadow:
 			0 0 20px rgba(240, 237, 232, 0.18),
 			0 0 40px rgba(240, 237, 232, 0.08);
-  		transition: 0.3s;
+		transition: 0.3s;
 	}
 
 	.hero-name:hover {
@@ -108,7 +119,9 @@
 		height: 28px;
 		color: #888580;
 		text-decoration: none;
-		transition: color 0.2s, transform 0.2s;
+		transition:
+			color 0.2s,
+			transform 0.2s;
 	}
 
 	.hero-btn svg {
@@ -117,7 +130,7 @@
 	}
 
 	.hero-btn::after {
-		content: '';
+		content: "";
 		position: absolute;
 		inset: 0;
 		background: radial-gradient(

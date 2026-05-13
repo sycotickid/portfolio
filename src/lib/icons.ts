@@ -1,7 +1,6 @@
 import {
 	siGithub,
 	siPhp,
-	siLaravel,
 	siDotnet,
 	siGo,
 	siNodedotjs,
