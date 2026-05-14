@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { mouseGlow } from "$lib/actions/mouseGlow";
 	import { brandIcons } from "$lib/icons";
+	import Moon from "../internal/Moon.svelte";
 
 	export let name: string;
 	export let title: string;
@@ -12,6 +13,7 @@
 	id="hero"
 	style="min-height: 100vh; display: flex; align-items: center; padding-top: 56px; position: relative;"
 >
+	<Moon />
 	<div style="max-width: 1100px; margin: 0 auto; padding: 96px 24px;">
 		<h1 class="hero-name" use:mouseGlow>
 			{name}

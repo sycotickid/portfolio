@@ -39,7 +39,14 @@
 					<div style="display: flex; flex-wrap: wrap; gap: 8px;">
 						{#each group.items as skill}
 							{@const icon = skill.icon ? skillIcons[skill.icon] : undefined}
-							<span class="skill-pill" use:mouseGlow>
+							<svelte:element
+								this={skill.link ? 'a' : 'span'}
+								href={skill.link ?? undefined}
+								target={skill.link ? '_blank' : undefined}
+								rel={skill.link ? 'noopener noreferrer' : undefined}
+								class="skill-pill"
+								use:mouseGlow
+							>
 								{#if icon}
 									<svg
 										width="12"
@@ -53,7 +60,7 @@
 									</svg>
 								{/if}
 								{skill.name}
-							</span>
+							</svelte:element>
 						{/each}
 					</div>
 				</div>

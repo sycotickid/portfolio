@@ -15,6 +15,7 @@ export interface Experience {
 	start_date: string;
 	end_date: string;
 	description: string;
+	link?: string;
 }
 
 export interface Education {
@@ -22,6 +23,7 @@ export interface Education {
 	degree: string;
 	institution: string;
 	year: number;
+	link?: string;
 }
 
 export interface Skill {
@@ -29,6 +31,16 @@ export interface Skill {
 	name: string;
 	category: string;
 	icon?: string;
+	link?: string;
+}
+
+export interface Project {
+	id: number;
+	title: string;
+	description: string;
+	thumbnail?: string;
+	link?: string;
+	tech: string[];
 }
 
 export const profileData: Profile = {
@@ -143,4 +155,28 @@ export const skillsData: Skill[] = [
 	{ id: 21, name: "Unreal Engine", category: "gamedev", icon: "unrealengine" },
 	{ id: 22, name: "Godot", category: "gamedev", icon: "godot" },
 	{ id: 23, name: "Blender", category: "gamedev", icon: "blender" },
+];
+
+export const projectsData: Project[] = [
+	{
+		id: 1,
+		title: "Dungeon Crawler",
+		description:
+			"A procedurally generated dungeon crawler with hand-crafted pixel art assets and emergent gameplay systems.",
+		tech: ["godot", "blender"],
+	},
+	{
+		id: 2,
+		title: "Dev Portfolio",
+		description:
+			"This portfolio — SvelteKit with an in-browser SQLite database powered by sql.js WASM.",
+		tech: ["svelte", "typescript"],
+	},
+	{
+		id: 3,
+		title: "Inventory API",
+		description:
+			"RESTful inventory management service with JWT auth, built on Go with PostgreSQL and containerized via Docker.",
+		tech: ["go", "postgresql", "docker"],
+	},
 ];

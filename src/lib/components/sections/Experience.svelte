@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fadeIn } from "$lib/actions/fadeIn";
 	import type { Experience } from "$lib/data/seed";
+	import ISS from "$lib/components/internal/ISS.svelte";
 
 	export let experiences: Experience[];
 
@@ -9,8 +10,9 @@
 	}
 </script>
 
-<section id="experience" class="section-pad">
-	<div use:fadeIn class="section-inner">
+<section id="experience" class="section-pad" style="position: relative; overflow: hidden;">
+	<ISS />
+	<div use:fadeIn class="section-inner" style="position: relative; z-index: 1;">
 		<h2 class="section-heading" style="margin-bottom: 48px;">Experience</h2>
 
 		<div style="position: relative;">
@@ -39,7 +41,19 @@
 									       font-size: 1.2rem; color: #f0ede8; margin: 0 0 4px 0;
 									       font-weight: 700;"
 								>
-									{exp.company}
+									{#if exp.link}
+										<a
+											href={exp.link}
+											target="_blank"
+											rel="noopener noreferrer"
+											style="color: inherit; text-decoration: none; border-bottom: 1px solid #2a2a2a;
+											       transition: border-color 0.2s;"
+											onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#5a84e7")}
+											onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "#2a2a2a")}
+										>{exp.company}</a>
+									{:else}
+										{exp.company}
+									{/if}
 								</h3>
 								<p class="mono-meta">{exp.title} · {exp.location}</p>
 							</div>
@@ -69,3 +83,4 @@
 		</div>
 	</div>
 </section>
+

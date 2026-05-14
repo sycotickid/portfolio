@@ -6,28 +6,38 @@
 		getExperience,
 		getSkills,
 		getEducation,
+		getProjects,
 	} from "$lib/db";
 	import {
 		profileData,
 		experienceData,
 		skillsData,
 		educationData,
+		projectsData,
 	} from "$lib/data/seed";
-	import type { Profile, Experience, Skill, Education } from "$lib/data/seed";
+	import type {
+		Profile,
+		Experience,
+		Skill,
+		Education,
+		Project,
+	} from "$lib/data/seed";
 
-	import Nav from "$lib/components/Nav.svelte";
-	import Starfield from "$lib/components/Starfield.svelte";
-	import Hero from "$lib/components/Hero.svelte";
-	import About from "$lib/components/About.svelte";
-	import Skills from "$lib/components/Skills.svelte";
-	import ExperienceSection from "$lib/components/Experience.svelte";
-	import EducationSection from "$lib/components/Education.svelte";
-	import Contact from "$lib/components/Contact.svelte";
+	import Nav from "$lib/components/sections/Nav.svelte";
+	import Starfield from "$lib/components/internal/Starfield.svelte";
+	import Hero from "$lib/components/sections/Hero.svelte";
+	import About from "$lib/components/sections/About.svelte";
+	import Skills from "$lib/components/sections/Skills.svelte";
+	import ExperienceSection from "$lib/components/sections/Experience.svelte";
+	import EducationSection from "$lib/components/sections/Education.svelte";
+	import ProjectsSection from "$lib/components/sections/Projects.svelte";
+	import Contact from "$lib/components/sections/Contact.svelte";
 
 	let profile: Profile = profileData;
 	let experiences: Experience[] = experienceData;
 	let skills: Skill[] = skillsData;
 	let education: Education[] = educationData;
+	let projects: Project[] = projectsData;
 
 	let showScrollTop = false;
 	let imgMouseX = 0;
@@ -49,6 +59,7 @@
 		experiences = getExperience();
 		skills = getSkills();
 		education = getEducation();
+		projects = getProjects();
 
 		const onScroll = () => {
 			showScrollTop = window.scrollY > window.innerHeight * 0.8;
@@ -102,6 +113,7 @@
 	/>
 	<About summary={profile.summary} />
 	<Skills {skills} />
+	<!-- <ProjectsSection {projects} /> -->
 	<ExperienceSection {experiences} />
 	<EducationSection {education} />
 	<Contact />

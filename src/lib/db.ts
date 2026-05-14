@@ -3,8 +3,9 @@ import {
 	experienceData,
 	educationData,
 	skillsData,
+	projectsData,
 } from "./data/seed";
-import type { Profile, Experience, Education, Skill } from "./data/seed";
+import type { Profile, Experience, Education, Skill, Project } from "./data/seed";
 
 let db: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -30,13 +31,17 @@ function createTables() {
 		);
 		CREATE TABLE IF NOT EXISTS experience (
 			id INTEGER PRIMARY KEY, company TEXT, title TEXT,
-			location TEXT, start_date TEXT, end_date TEXT, description TEXT
+			location TEXT, start_date TEXT, end_date TEXT, description TEXT, link TEXT
 		);
 		CREATE TABLE IF NOT EXISTS education (
-			id INTEGER PRIMARY KEY, degree TEXT, institution TEXT, year INTEGER
+			id INTEGER PRIMARY KEY, degree TEXT, institution TEXT, year INTEGER, link TEXT
 		);
 		CREATE TABLE IF NOT EXISTS skill (
-			id INTEGER PRIMARY KEY, name TEXT, category TEXT, icon TEXT
+			id INTEGER PRIMARY KEY, name TEXT, category TEXT, icon TEXT, link TEXT
+		);
+		CREATE TABLE IF NOT EXISTS project (
+			id INTEGER PRIMARY KEY, title TEXT, description TEXT,
+			thumbnail TEXT, link TEXT, tech TEXT
 		);
 	`);
 }
@@ -52,7 +57,7 @@ function seedDB() {
 		profileData.linkedin,
 	]);
 	for (const e of experienceData) {
-		db.run("INSERT OR IGNORE INTO experience VALUES (?,?,?,?,?,?,?)", [
+		db.run("INSERT OR IGNORE INTO experience VALUES (?,?,?,?,?,?,?,?)", [
 			e.id,
 			e.company,
 			e.title,
@@ -60,22 +65,35 @@ function seedDB() {
 			e.start_date,
 			e.end_date,
 			e.description,
+			e.link ?? null,
 		]);
 	}
 	for (const e of educationData) {
-		db.run("INSERT OR IGNORE INTO education VALUES (?,?,?,?)", [
+		db.run("INSERT OR IGNORE INTO education VALUES (?,?,?,?,?)", [
 			e.id,
 			e.degree,
 			e.institution,
 			e.year,
+			e.link ?? null,
 		]);
 	}
 	for (const s of skillsData) {
-		db.run("INSERT OR IGNORE INTO skill VALUES (?,?,?,?)", [
+		db.run("INSERT OR IGNORE INTO skill VALUES (?,?,?,?,?)", [
 			s.id,
 			s.name,
 			s.category,
 			s.icon ?? null,
+			s.link ?? null,
+		]);
+	}
+	for (const p of projectsData) {
+		db.run("INSERT OR IGNORE INTO project VALUES (?,?,?,?,?,?)", [
+			p.id,
+			p.title,
+			p.description,
+			p.thumbnail ?? null,
+			p.link ?? null,
+			JSON.stringify(p.tech),
 		]);
 	}
 }
@@ -96,15 +114,7 @@ export function getExperience(): Experience[] {
 		const res = db.exec("SELECT * FROM experience ORDER BY id");
 		if (res.length) {
 			return res[0].values.map(
-				([
-					id,
-					company,
-					title,
-					location,
-					start_date,
-					end_date,
-					description,
-				]: unknown[]) =>
+				([id, company, title, location, start_date, end_date, description, link]: unknown[]) =>
 					({
 						id,
 						company,
@@ -113,6 +123,7 @@ export function getExperience(): Experience[] {
 						start_date,
 						end_date,
 						description,
+						link: link ?? undefined,
 					}) as Experience,
 			);
 		}
@@ -125,8 +136,8 @@ export function getEducation(): Education[] {
 		const res = db.exec("SELECT * FROM education ORDER BY id");
 		if (res.length) {
 			return res[0].values.map(
-				([id, degree, institution, year]: unknown[]) =>
-					({ id, degree, institution, year }) as Education,
+				([id, degree, institution, year, link]: unknown[]) =>
+					({ id, degree, institution, year, link: link ?? undefined }) as Education,
 			);
 		}
 	}
@@ -138,10 +149,30 @@ export function getSkills(): Skill[] {
 		const res = db.exec("SELECT * FROM skill ORDER BY category, id");
 		if (res.length) {
 			return res[0].values.map(
-				([id, name, category, icon]: unknown[]) =>
-					({ id, name, category, icon: icon ?? undefined }) as Skill,
+				([id, name, category, icon, link]: unknown[]) =>
+					({ id, name, category, icon: icon ?? undefined, link: link ?? undefined }) as Skill,
 			);
 		}
 	}
 	return skillsData;
+}
+
+export function getProjects(): Project[] {
+	if (db) {
+		const res = db.exec("SELECT * FROM project ORDER BY id");
+		if (res.length) {
+			return res[0].values.map(
+				([id, title, description, thumbnail, link, tech]: unknown[]) =>
+					({
+						id,
+						title,
+						description,
+						thumbnail: thumbnail ?? undefined,
+						link: link ?? undefined,
+						tech: JSON.parse(tech as string),
+					}) as Project,
+			);
+		}
+	}
+	return projectsData;
 }
