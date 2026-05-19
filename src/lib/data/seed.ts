@@ -148,25 +148,25 @@ export const skillsData: Skill[] = [
 ];
 
 export const projectsData: Project[] = [
-	{
-		id: 1,
-		title: "Dungeon Crawler",
-		description:
-			"A procedurally generated dungeon crawler with hand-crafted pixel art assets and emergent gameplay systems.",
-		tech: ["godot", "blender"],
-	},
-	{
-		id: 2,
-		title: "Dev Portfolio",
-		description:
-			"This portfolio — SvelteKit with an in-browser SQLite database powered by sql.js WASM.",
-		tech: ["svelte", "typescript"],
-	},
-	{
-		id: 3,
-		title: "Inventory API",
-		description:
-			"RESTful inventory management service with JWT auth, built on Go with PostgreSQL and containerized via Docker.",
-		tech: ["go", "postgresql", "docker"],
-	},
+	// {
+	// 	id: 1,
+	// 	title: "Dungeon Crawler",
+	// 	description:
+	// 		"A procedurally generated dungeon crawler with hand-crafted pixel art assets and emergent gameplay systems.",
+	// 	tech: ["godot", "blender"],
+	// },
+	// {
+	// 	id: 2,
+	// 	title: "Dev Portfolio",
+	// 	description:
+	// 		"This portfolio — SvelteKit with an in-browser SQLite database powered by sql.js WASM.",
+	// 	tech: ["svelte", "typescript"],
+	// },
+	// {
+	// 	id: 3,
+	// 	title: "Inventory API",
+	// 	description:
+	// 		"RESTful inventory management service with JWT auth, built on Go with PostgreSQL and containerized via Docker.",
+	// 	tech: ["go", "postgresql", "docker"],
+	// },
 ];
