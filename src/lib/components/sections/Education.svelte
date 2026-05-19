@@ -47,5 +47,9 @@
 		.edu-grid {
 			grid-template-columns: 1fr !important;
 		}
+
+		.edu-card {
+			text-align: center;
+		}
 	}
 </style>

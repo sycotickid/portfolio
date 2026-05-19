@@ -36,7 +36,7 @@
 			{#each grouped as group}
 				<div class="skill-group">
 					<h3 class="mono-label" style="margin-bottom: 16px;">{group.label}</h3>
-					<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+					<div class="skill-pills" style="display: flex; flex-wrap: wrap; gap: 8px;">
 						{#each group.items as skill}
 							{@const icon = skill.icon ? skillIcons[skill.icon] : undefined}
 							<svelte:element
@@ -119,6 +119,14 @@
 	@media (max-width: 639px) {
 		.skills-grid {
 			grid-template-columns: 1fr !important;
+		}
+
+		.skill-group {
+			text-align: center;
+		}
+
+		.skill-pills {
+			justify-content: center;
 		}
 	}
 </style>

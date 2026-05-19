@@ -29,6 +29,7 @@
 				alt="Javier Gonzalez"
 				width="256"
 				height="256"
+				class="about-img"
 				style="width: 256px; height: 256px;
 				       object-fit: cover; display: block; flex-shrink: 0; backdrop-filter: blur(4px);
 					   background: rgba(255, 255, 255, 0.02); border: 1px solid #2a2a2a;"
@@ -40,9 +41,21 @@
 </section>
 
 <style>
+	.about-img {
+		max-width: 100%;
+	}
+
 	@media (max-width: 639px) {
 		.about-grid {
 			grid-template-columns: 1fr !important;
+		}
+
+		.about-img {
+			margin: 0 auto;
+		}
+
+		.summary-paragraph {
+			text-align: left;
 		}
 	}
 

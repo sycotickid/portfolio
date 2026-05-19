@@ -69,7 +69,7 @@
 		{:else}
 			<form
 				onsubmit={send}
-				style="max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;"
+				style="max-width: min(320px, 100%); margin: 0 auto; display: flex; flex-direction: column; gap: 20px;"
 			>
 				<div style="display: flex; flex-direction: column; gap: 6px;">
 					<label for="c-name" class="mono-label">Name</label>

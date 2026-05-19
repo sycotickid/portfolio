@@ -104,3 +104,14 @@ body {
 	color: #888580;
 	margin: 0;
 }
+
+@media (max-width: 639px) {
+	.section-pad {
+		padding: 56px 0;
+	}
+
+	.section-heading,
+	.mono-label {
+		text-align: center;
+	}
+}

@@ -65,34 +65,59 @@
 
 	onMount(() => {
 		const DURATION = 300000;
+		const LERP = 0.08;
+		const MAX_DT = 100;
 		let elapsed = 1;
 		let last = performance.now();
 		let raf: number;
+		let vw = window.innerWidth;
+		let vh = window.innerHeight;
 
 		drawPhase(getMoonPhase());
 
-		function tick(now: number) {
-			elapsed = (elapsed + (now - last)) % DURATION;
-			last = now;
-
-			const t = elapsed / DURATION;
-			const vw = window.innerWidth;
-			const vh = window.innerHeight;
-
+		function target(e: number) {
+			const t = e / DURATION;
 			const x = -150 + (vw + 320) * t;
-
 			const yStart = vh * 0.5;
 			const yPeak = vh * -0.1;
 			const yEnd = vh * 0.3;
 			const mt = 1 - t;
 			const y = mt * mt * yStart + 2 * mt * t * yPeak + t * t * yEnd;
+			return { x, y };
+		}
 
-			container.style.transform = `translate(${x}px, ${y}px)`;
+		const init = target(elapsed);
+		let smoothX = init.x;
+		let smoothY = init.y;
+
+		function tick(now: number) {
+			const dt = Math.min(now - last, MAX_DT);
+			last = now;
+			const wrapped = elapsed + dt >= DURATION;
+			elapsed = (elapsed + dt) % DURATION;
+
+			const { x, y } = target(elapsed);
+			if (wrapped) {
+				smoothX = x;
+				smoothY = y;
+			} else {
+				const alpha = 1 - Math.pow(1 - LERP, dt / 16.67);
+				smoothX += (x - smoothX) * alpha;
+				smoothY += (y - smoothY) * alpha;
+			}
+
+			container.style.transform = `translate(${smoothX}px, ${smoothY}px)`;
 			raf = requestAnimationFrame(tick);
 		}
 
+		const onResize = () => { vw = window.innerWidth; vh = window.innerHeight; };
+		window.addEventListener("resize", onResize);
+
 		raf = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(raf);
+		return () => {
+			cancelAnimationFrame(raf);
+			window.removeEventListener("resize", onResize);
+		};
 	});
 </script>
 

@@ -4,6 +4,14 @@
 	let activeSection = "";
 	let mobileOpen = false;
 
+	function handleDocClick(e: MouseEvent) {
+		if (!mobileOpen) return;
+		const header = document.querySelector("header");
+		if (header && !header.contains(e.target as Node)) {
+			mobileOpen = false;
+		}
+	}
+
 	const links = [
 		{ href: "#about", label: "About" },
 		{ href: "#skills", label: "Skills" },
@@ -31,7 +39,12 @@
 		);
 
 		sections.forEach((s) => observer.observe(s));
-		return () => observer.disconnect();
+
+		document.addEventListener("click", handleDocClick);
+		return () => {
+			observer.disconnect();
+			document.removeEventListener("click", handleDocClick);
+		};
 	});
 </script>
 

@@ -14,18 +14,19 @@
 	style="min-height: 100vh; display: flex; align-items: center; padding-top: 56px; position: relative;"
 >
 	<Moon />
-	<div style="max-width: 1100px; margin: 0 auto; padding: 96px 24px;">
+	<div class="hero-inner" style="max-width: 1100px; margin: 0 auto; padding: 96px 24px;">
 		<h1 class="hero-name" use:mouseGlow>
 			{name}
 		</h1>
 		<p
+			class="hero-subtitle"
 			style="font-family: 'JetBrains Mono', monospace; color: #888580;
 			       font-size: 1rem; margin: 0 0 40px 0; letter-spacing: 0.05em;"
 		>
 			{title}
 		</p>
 
-		<div style="display: flex; align-items: center; gap: 20px;">
+		<div class="hero-links" style="display: flex; align-items: center; gap: 20px;">
 			<a
 				href="mailto:{email}"
 				title="Email"
@@ -153,5 +154,28 @@
 
 	.hero-btn:hover::after {
 		opacity: 1;
+	}
+
+	@media (max-width: 639px) {
+		.hero-inner {
+			padding: 56px 24px;
+		}
+
+		.hero-name {
+			text-align: center;
+		}
+
+		.hero-subtitle {
+			text-align: center;
+		}
+
+		.hero-links {
+			justify-content: center;
+		}
+
+		.hero-btn {
+			width: 44px;
+			height: 44px;
+		}
 	}
 </style>
