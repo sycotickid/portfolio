@@ -96,17 +96,7 @@ export const experienceData: Experience[] = [
 	},
 	{
 		id: 5,
-		company: "Code Ninjas / iD Tech",
-		title: "Programming Instructor",
-		location: "Carlsbad & San Marcos, CA",
-		start_date: "Jan 2018",
-		end_date: "Apr 2019",
-		description:
-			"Taught programming fundamentals and Unreal Engine 4 game development to students.|Contributed to curriculum development; designed advanced exercises for high-performing students.",
-	},
-	{
-		id: 6,
-		company: "Florida International University",
+		company: "PantherSoft @ FIU",
 		title: "Front-End Developer",
 		location: "Miami, FL",
 		start_date: "Oct 2014",
