@@ -15,7 +15,7 @@
 	const links = [
 		{ href: "#about", label: "About" },
 		{ href: "#skills", label: "Skills" },
-		// { href: "#projects", label: "Projects" },
+		{ href: "#projects", label: "Projects" },
 		{ href: "#experience", label: "Experience" },
 		{ href: "#education", label: "Education" },
 		{ href: "#contact", label: "Contact" },
@@ -59,7 +59,7 @@
 	>
 		<a
 			href="#hero"
-			style="font-family: 'Playfair Display', Georgia, serif; color: #f0ede8;
+			style="font-family: var(--font-display); color: #f0ede8;
 			       font-size: 1.1rem; text-decoration: none; letter-spacing: -0.02em;
 			       transition: color 0.2s;"
 			onmouseenter={(e) => (e.currentTarget.style.color = "#5a84e7")}
@@ -76,7 +76,7 @@
 				<li>
 					<a
 						href={link.href}
-						style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+						style="font-family: var(--font-mono); font-size: 0.7rem;
 						       text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
 						       position: relative; padding-bottom: 4px; transition: color 0.2s;
 						       color: {activeSection === link.href ? '#5a84e7' : '#888580'};"
@@ -133,7 +133,7 @@
 						<a
 							href={link.href}
 							onclick={() => (mobileOpen = false)}
-							style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+							style="font-family: var(--font-mono); font-size: 0.7rem;
 							       text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none;
 							       color: {activeSection === link.href ? '#5a84e7' : '#888580'};"
 						>

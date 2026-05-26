@@ -23,7 +23,7 @@
 						((e.currentTarget as HTMLElement).style.borderColor = "#2a2a2a")}
 				>
 					<h3
-						style="font-family: 'Playfair Display Variable', Georgia, serif; font-size: 1.15rem;
+						style="font-family: var(--font-display) font-size: 1.15rem;
 						       color: #f0ede8; margin: 0 0 8px 0; font-weight: 700;"
 					>
 						{edu.degree}

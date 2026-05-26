@@ -21,7 +21,7 @@
 					/>
 					<div style="margin-bottom: 12px;">
 						<h3
-							style="font-family: 'Playfair Display Variable', Georgia, serif;
+							style="font-family: var(--font-display);
 							       font-size: 1.1rem; color: #f0ede8; margin: 0 0 8px 0; font-weight: 700;"
 						>
 							{#if project.link}
@@ -100,7 +100,7 @@
 	}
 
 	.tech-pill {
-		font-family: "JetBrains Mono", monospace;
+		font-family: var(--font-mono);
 		font-size: 0.65rem;
 		padding: 4px 8px;
 		border: 1px solid #2a2a2a;

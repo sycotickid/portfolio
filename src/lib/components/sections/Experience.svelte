@@ -46,7 +46,7 @@
 							>
 								<h3
 									class="exp-company"
-									style="font-family: 'Playfair Display Variable', Georgia, serif;
+									style="font-family: var(--font-display);
 									       font-size: 1.2rem; color: #f0ede8; margin: 0;
 									       font-weight: 700; min-width: 0; overflow: hidden;
 									       text-overflow: ellipsis; white-space: nowrap;"

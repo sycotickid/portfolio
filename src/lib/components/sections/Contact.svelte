@@ -152,7 +152,7 @@
 		border: 1px solid #2a2a2a;
 		color: #f0ede8;
 		padding: 10px 12px;
-		font-family: "JetBrains Mono", monospace;
+		font-family: var(--font-mono);
 		font-size: 0.8rem;
 		outline: none;
 		transition: border-color 0.2s;
@@ -171,7 +171,7 @@
 		background: transparent;
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
-		font-family: "JetBrains Mono", monospace;
+		font-family: var(--font-mono);
 		font-size: 0.7rem;
 		text-transform: uppercase;
 		letter-spacing: 0.1em;

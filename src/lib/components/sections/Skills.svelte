@@ -36,14 +36,17 @@
 			{#each grouped as group}
 				<div class="skill-group">
 					<h3 class="mono-label" style="margin-bottom: 16px;">{group.label}</h3>
-					<div class="skill-pills" style="display: flex; flex-wrap: wrap; gap: 8px;">
+					<div
+						class="skill-pills"
+						style="display: flex; flex-wrap: wrap; gap: 8px;"
+					>
 						{#each group.items as skill}
 							{@const icon = skill.icon ? skillIcons[skill.icon] : undefined}
 							<svelte:element
-								this={skill.link ? 'a' : 'span'}
+								this={skill.link ? "a" : "span"}
 								href={skill.link ?? undefined}
-								target={skill.link ? '_blank' : undefined}
-								rel={skill.link ? 'noopener noreferrer' : undefined}
+								target={skill.link ? "_blank" : undefined}
+								rel={skill.link ? "noopener noreferrer" : undefined}
 								class="skill-pill"
 								use:mouseGlow
 							>
@@ -74,7 +77,7 @@
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
 		background: rgba(255, 255, 255, 0.02);
-		font-family: "JetBrains Mono", monospace;
+		font-family: var(--font-mono);
 		font-size: 0.7rem;
 		padding: 6px 12px;
 		border: 1px solid #2a2a2a;

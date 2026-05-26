@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@fontsource-variable/noto-sans": "^5.0.0",
+    "@fontsource-variable/noto-sans-mono": "^5.2.10",
     "@fontsource-variable/playfair-display": "^5.0.0",
     "@fontsource/jetbrains-mono": "^5.0.0",
     "resend": "^6.12.3",
