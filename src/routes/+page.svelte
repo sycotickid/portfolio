@@ -126,7 +126,7 @@
 	/>
 	<About summary={profile.summary} />
 	<Skills {skills} />
-	<ProjectsSection {projects} />
+	<!-- <ProjectsSection {projects} /> -->
 	<ExperienceSection {experiences} />
 	<EducationSection {education} />
 	<Contact />
