@@ -109,6 +109,11 @@
 	<meta property="og:title" content="{profile.name} — {profile.title}" />
 	<meta property="og:description" content={profile.summary} />
 	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://javiergonzalez.dev" />
+	<meta property="og:image" content="https://javiergonzalez.dev/og.jpg" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://javiergonzalez.dev/og.jpg" />
 	<meta name="robots" content="index, follow" />
 	{@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 </svelte:head>
