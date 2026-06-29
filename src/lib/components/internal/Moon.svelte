@@ -12,7 +12,8 @@
 		return (((elapsed % SYNODIC_MS) + SYNODIC_MS) % SYNODIC_MS) / SYNODIC_MS;
 	}
 
-	function drawPhase(phase: number) {
+	function drawPhase() {
+		const phase = (getMoonPhase() + 0.5) % 1;
 		const ctx = canvas.getContext("2d")!;
 		const size = canvas.width;
 		const r = size / 2;
@@ -73,7 +74,7 @@
 		let vw = window.innerWidth;
 		let vh = window.innerHeight;
 
-		drawPhase((getMoonPhase() + 0.5) % 1);
+		drawPhase();
 
 		function target(e: number) {
 			const t = e / DURATION;
@@ -110,7 +111,10 @@
 			raf = requestAnimationFrame(tick);
 		}
 
-		const onResize = () => { vw = window.innerWidth; vh = window.innerHeight; };
+		const onResize = () => {
+			vw = window.innerWidth;
+			vh = window.innerHeight;
+		};
 		window.addEventListener("resize", onResize);
 
 		raf = requestAnimationFrame(tick);
