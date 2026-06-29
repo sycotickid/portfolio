@@ -73,7 +73,7 @@
 		let vw = window.innerWidth;
 		let vh = window.innerHeight;
 
-		drawPhase(getMoonPhase());
+		drawPhase((getMoonPhase() + 0.5) % 1);
 
 		function target(e: number) {
 			const t = e / DURATION;
